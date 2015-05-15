@@ -76,18 +76,6 @@ class TaobaoSpider(CrawlSpider):
                     headers = self.headers,\
                     meta = {'cookiejar':response.meta['cookiejar']},\
                     callback = self.get_J_HToken)]
-        # else:
-            # print 'success-------'
-
-
-
-        # for report_url in report_urls:
-        #     #print "list:"+report_url
-        #     yield Request(report_url,\
-        #                     headers = self.headers,\
-        #                     meta = {'cookiejar':response.meta['cookiejar'],\
-        #                             },\
-        #                     callback = self.parse_report)
 
     def get_J_HToken(self, response):
         self._log_page(response, 'get_J_HToken.html')
@@ -141,17 +129,6 @@ class TaobaoSpider(CrawlSpider):
                     'Host':'login.taobao.com',
                     'Connection' : 'Keep-Alive'
                 }
-                # request = urllib2.Request(stURL,headers = headers)
-                # response = self.newOpener.open(request)
-                # content =  response.read().decode('gbk')
-                # import codecs
-                # f = codecs.open('st.txt', 'wb', encoding='utf-8')
-                # f.write(content)
-                # #检测结果，看是否登录成功
-                # pattern = re.compile('"url":"(.*?)"',re.S)
-                # print pattern,'=-=-=-=-=-'
-                # match = re.search(pattern,content)
-                # print match.group(),'--------------------'
 
                 return Request(stURL,\
                             headers = headers,\
