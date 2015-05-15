@@ -14,8 +14,8 @@ class TaobaoSpider(CrawlSpider):
     start_urls = ['https://login.taobao.com/member/login.jhtml']
     def __init__(self, *args, **kwargs):
         super(TaobaoSpider, self).__init__(*args, **kwargs)
-        self.http_user = 'bobo8710'   # taobao username
-        self.http_pass = '2322871hzb'   # taobao password
+        self.http_user = 'xxxxxxxx'   # taobao username
+        self.http_pass = 'xxxxxxxx'   # taobao password
         #login form
         self.formdata = {
                         'TPL_checkcode':'',\
