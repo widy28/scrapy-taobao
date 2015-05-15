@@ -14,8 +14,8 @@ class TaobaoSpider(CrawlSpider):
     start_urls = ['https://login.taobao.com/member/login.jhtml']
     def __init__(self, *args, **kwargs):
         super(TaobaoSpider, self).__init__(*args, **kwargs)
-        self.http_user = 'xxxxxxxx'   # taobao username
-        self.http_pass = 'xxxxxxxx'   # taobao password
+        self.http_user = 'xxxxxxxxx'   # taobao username
+        self.http_pass = 'xxxxxxxxx'   # taobao password
         #login form
         self.formdata = {
                         'TPL_checkcode':'',\
@@ -71,11 +71,11 @@ class TaobaoSpider(CrawlSpider):
                 #将验证码重新添加到post的数据中
                 print checkcode
                 self.formdata['TPL_checkcode'] = checkcode
-                return [FormRequest.from_response(response, \
-                            formdata = self.formdata,\
-                            headers = self.headers,\
-                            meta = {'cookiejar':response.meta['cookiejar']},\
-                            callback = self.get_J_HToken)]
+        return [FormRequest.from_response(response, \
+                    formdata = self.formdata,\
+                    headers = self.headers,\
+                    meta = {'cookiejar':response.meta['cookiejar']},\
+                    callback = self.get_J_HToken)]
         # else:
             # print 'success-------'
 
