@@ -14,8 +14,8 @@ class TaobaoSpider(CrawlSpider):
     start_urls = ['https://login.taobao.com/member/login.jhtml']
     def __init__(self, *args, **kwargs):
         super(TaobaoSpider, self).__init__(*args, **kwargs)
-        self.http_user = 'xxxxxx'   # taobao username
-        self.http_pass = 'xxxxxx'   # taobao password
+        self.http_user = 'bobo8710'   # taobao username
+        self.http_pass = '2322871hzb'   # taobao password
         #login form
         self.formdata = {
                         'TPL_checkcode':'',\
@@ -67,9 +67,9 @@ class TaobaoSpider(CrawlSpider):
                 import webbrowser
                 webbrowser.open_new_tab(checkcode_url[0])
                 #提示用户输入验证码
-                checkcode = raw_input(u'shuruyanzhengma:')
+                checkcode = raw_input(u'input checkcode:')
                 #将验证码重新添加到post的数据中
-                print checkcode,'--------------------'
+                print checkcode
                 self.formdata['TPL_checkcode'] = checkcode
                 return [FormRequest.from_response(response, \
                             formdata = self.formdata,\
@@ -94,7 +94,7 @@ class TaobaoSpider(CrawlSpider):
 
         hxs = Selector(response)
         J_HToken_data = hxs.xpath('//input[@id="J_HToken"]/@value').extract()
-        print J_HToken_data,'tttttt-----'
+        # print J_HToken_data,'tttttt-----'
         if not J_HToken_data:
             # print u"get Token unsucc，redo"
             # print u'可能验证码错误'
@@ -109,9 +109,9 @@ class TaobaoSpider(CrawlSpider):
                     import webbrowser
                     webbrowser.open_new_tab(checkcode_url[0])
                     #提示用户输入验证码
-                    checkcode = raw_input(u'shuruyanzhengma:')
+                    checkcode = raw_input(u'input checkcode:')
                     #将验证码重新添加到post的数据中
-                    print checkcode,'--------------------'
+                    print checkcode
                     self.formdata['TPL_checkcode'] = checkcode
                     return [FormRequest.from_response(response, \
                                 formdata = self.formdata,\
@@ -178,7 +178,7 @@ class TaobaoSpider(CrawlSpider):
         self._log_page(response, 'get_next.html')
         hxs = Selector(response)
         nick = hxs.xpath('//em[@class="s-name"]/a/text()').extract()
-        # print nick,'--------'
+        print "login-success, get user nick:",nick
         return None
 
 
