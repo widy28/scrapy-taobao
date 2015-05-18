@@ -15,3 +15,8 @@ NEWSPIDER_MODULE = 'taobao.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'taobao (+http://www.yourdomain.com)'
+#
+# DOWNLOADER_MIDDLEWARES = {
+#     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+#     'taobao.middlewares.ProxyMiddleware': 100,
+# }

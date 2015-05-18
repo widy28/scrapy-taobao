@@ -50,7 +50,7 @@ class TaobaoSpider(CrawlSpider):
                             formdata = self.formdata,\
                             headers = self.headers,\
                             meta = {'cookiejar':response.meta['cookiejar']},\
-                            callback = self.parse_item)]#success login
+                            callback = self.parse_item)]
 
     def parse_item(self, response):
         self._log_page(response, 'get_checkcode.html')
@@ -134,10 +134,6 @@ class TaobaoSpider(CrawlSpider):
                             headers = headers,\
                             callback = self.get_check_login_success)
 
-
-
-            # return self.get_st(response)
-
     def get_check_login_success(self, response):
         # 登陆成功。。可以获取订单等信息了。后续补充更新。。
         self._log_page(response, 'get_check.html')
@@ -153,9 +149,12 @@ class TaobaoSpider(CrawlSpider):
 
     def get_next_data(self, response):
         self._log_page(response, 'get_next.html')
-        hxs = Selector(response)
-        nick = hxs.xpath('//em[@class="s-name"]/a/text()').extract()
-        print "login-success, get user nick:",nick
+        try:
+            hxs = Selector(response)
+            nick = hxs.xpath('//em[@class="s-name"]/a/text()').extract()
+            print "login-success, get user nick:",nick
+        except:
+            print u'请查看get_next.html里面是否是个人淘宝页，进行代码修改'
         return None
 
 
