@@ -1,5 +1,6 @@
-__author__ = 'Administrator'
 # -*- coding: utf-8 -*-
+
+__author__ = 'Administrator'
 
 from scrapy.contrib.spiders import CrawlSpider
 from scrapy.selector import Selector
